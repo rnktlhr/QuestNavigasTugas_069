@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.example.tugas4.R
 
 @Composable
-fun WelcomeScreen(
+fun HomePage(
     nama: String = "Rinakit Luhur",
     nim: String = "20230140069",
     onSubmitClick: () -> Unit
