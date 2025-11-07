@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Praktikum5</string>
     <string name="submit">Submit</string>
-    <string name="back">Back</string>
+    <string name="back">Formulir Pendaftaran</string>
+    <string name="back1">Home Page</string>
     <string name="nama_lengkap">NAMA LENGKAP</string>
     <string name="jenis_kelamin">JENIS KELAMIN</string>
     <string name="alamat">Alamat</string>

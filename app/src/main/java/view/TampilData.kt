@@ -28,7 +28,8 @@ import com.example.tugas4.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
-    onBackBtnClick: () -> Unit
+    onBackBtnClick: () -> Unit,
+    onBackBtnClick1: () -> Unit
 ) {
     val items = listOf(
         Pair(stringResource(id = R.string.nama_lengkap), "Contoh Nama"),
@@ -74,6 +75,12 @@ fun TampilData(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = onBackBtnClick) {
                     Text(text = stringResource(id=R.string.back))
+                }
+                Spacer(modifier = Modifier.height(height = 10.dp))
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onBackBtnClick1) {
+                    Text(text = stringResource(id=R.string.back1))
                 }
             }
         }

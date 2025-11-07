@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.tugas4.view.HomePage
 import com.example.tugas4.view.TampilData
+import com.example.tugaspam.FormPendaftaran
 
 enum class Navigasi {
     Home,
@@ -39,9 +40,6 @@ fun DataApp(
                 FormPendaftaran(
                     onSubmitData = {
                         navController.navigate(Navigasi.Detail.name)
-                    },
-                    onBackClick = {
-                        navController.popBackStack()
                     }
                 )
             }
@@ -49,6 +47,14 @@ fun DataApp(
                 TampilData(
                     onBackBtnClick = {
                         navController.popBackStack()
+                    },
+                    onBackBtnClick1 = {
+                        navController.navigate(Navigasi.Home.name) {
+                            popUpTo(Navigasi.Home.name) {
+                                inclusive = true
+                            }
+                            launchSingleTop = true
+                        }
                     }
                 )
             }

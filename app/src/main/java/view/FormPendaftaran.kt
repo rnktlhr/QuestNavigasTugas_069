@@ -1,4 +1,4 @@
-package com.example.tugas4
+package com.example.tugaspam
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -6,11 +6,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -35,11 +39,12 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tugas4.R
+
 
 @Composable
 fun FormPendaftaran(
     onSubmitData: () -> Unit,
-    onBackClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
     var nama by remember { mutableStateOf(TextFieldValue("")) }
@@ -47,43 +52,39 @@ fun FormPendaftaran(
     var jenisKelamin by remember { mutableStateOf("") }
     var statusPerkawinan by remember { mutableStateOf("") }
 
-    val paddingSmall = dimensionResource(id = R.dimen.padding_small)
-    val paddingMedium = dimensionResource(id = R.dimen.padding_medium)
-    val paddingLarge = dimensionResource(id = R.dimen.padding_large)
-    val buttonHeight = dimensionResource(id = R.dimen.button_height)
 
-    Surface(
-        color = Color(0xFFF6ECFF),
-        modifier = Modifier.fillMaxSize()
-    ) {
+    val backgroundColor = Color(0xFFF7F2FA)
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .background(backgroundColor)
+                .padding(top = 0.dp)
+
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .statusBarsPadding()
+                    .windowInsetsPadding(WindowInsets.statusBars)
                     .background(Color(0xFFB56BFF))
-                    .padding(vertical = paddingLarge)
+                    .heightIn(100.dp)
+                    .padding(16.dp),
+                contentAlignment = Alignment.BottomStart
             ) {
                 Text(
                     text = "Formulir Pendaftaran",
-                    fontSize = dimensionResource(id = R.dimen.font_title).value.sp,
+                    fontSize = 30.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Left,
-                    modifier = Modifier.padding(start = 16.dp)
-                        .fillMaxWidth()
+                    modifier = Modifier.padding(start = 10.dp)
                 )
             }
+
             Spacer(modifier = Modifier.height(40.dp))
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = paddingMedium)
+                    .padding(horizontal = 16.dp)
                     .wrapContentHeight(),
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -91,7 +92,7 @@ fun FormPendaftaran(
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(paddingMedium)
+                        .padding(16.dp)
                         .fillMaxWidth()
                 ) {
                     Text("NAMA LENGKAP", fontWeight = FontWeight.Bold)
@@ -101,78 +102,66 @@ fun FormPendaftaran(
                         placeholder = { Text("Isian nama lengkap") },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = paddingSmall)
+                            .padding(vertical = 8.dp)
                     )
-                }
-                Spacer(modifier = Modifier.height(paddingMedium))
 
-                Text("JENIS KELAMIN", fontWeight = FontWeight.Bold)
-                Spacer(modifier = Modifier.height(paddingSmall))
-                Column(verticalArrangement = Arrangement.spacedBy(paddingSmall)) {
-                    listOf("Laki-laki", "Perempuan").forEach { opsi ->
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            RadioButton(
-                                selected = jenisKelamin == opsi,
-                                onClick = { jenisKelamin = opsi }
-                            )
-                            Text(opsi)
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text("JENIS KELAMIN", fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        listOf("Laki-laki", "Perempuan").forEach { opsi ->
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(
+                                    selected = jenisKelamin == opsi,
+                                    onClick = { jenisKelamin = opsi }
+                                )
+                                Text(opsi)
+                            }
                         }
                     }
-                }
-                Spacer(modifier = Modifier.height(paddingMedium))
 
-                Text("STATUS PERKAWINAN", fontWeight = FontWeight.Bold)
-                Spacer(modifier = Modifier.height(paddingSmall))
-                Column(verticalArrangement = Arrangement.spacedBy(paddingSmall)) {
-                    listOf("Janda", "Lajang", "Duda").forEach { opsi ->
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            RadioButton(
-                                selected = statusPerkawinan == opsi,
-                                onClick = { statusPerkawinan = opsi }
-                            )
-                            Text(opsi)
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text("STATUS PERKAWINAN", fontWeight = FontWeight.Bold)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        listOf("Janda", "Lajang", "Duda").forEach { opsi ->
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(
+                                    selected = statusPerkawinan == opsi,
+                                    onClick = { statusPerkawinan = opsi }
+                                )
+                                Text(opsi)
+                            }
                         }
                     }
-                }
-                Spacer(modifier = Modifier.height(paddingMedium))
 
-                Text("ALAMAT", fontWeight = FontWeight.Bold)
-                OutlinedTextField(
-                    value = alamat,
-                    onValueChange = { alamat = it },
-                    placeholder = { Text("Alamat lengkap") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = paddingSmall)
-                )
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                Spacer(modifier = Modifier.height(paddingLarge))
+                    Text("ALAMAT", fontWeight = FontWeight.Bold)
+                    OutlinedTextField(
+                        value = alamat,
+                        onValueChange = { alamat = it },
+                        placeholder = { Text("Alamat lengkap") },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                    )
 
-                Button(
-                    onClick = { onSubmitData() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2)),
-                    shape = RoundedCornerShape(50),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(buttonHeight)
-                ) {
-                    Text("Submit", color = Color.White, fontWeight = FontWeight.Bold)
-                }
+                    Spacer(modifier = Modifier.height(24.dp))
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Tombol Kembali
-                Button(
-                    onClick = { onBackClick() },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Gray),
-                    shape = RoundedCornerShape(50),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(buttonHeight)
-                ) {
-                    Text("Kembali", color = Color.White, fontWeight = FontWeight.Bold)
+                    Button(
+                        onClick = { onSubmitData() },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2)),
+                        shape = RoundedCornerShape(50),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp)
+                    ) {
+                        Text("Submit", color = Color.White, fontWeight = FontWeight.Bold)
+                    }
                 }
             }
         }
     }
-}
