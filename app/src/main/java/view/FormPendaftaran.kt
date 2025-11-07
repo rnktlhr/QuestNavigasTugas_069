@@ -39,7 +39,7 @@ fun FormulirPendaftaran(modifier: Modifier){
     var nama by remember { mutableStateOf(TextFieldValue("")) }
     val alamat by remember { mutableStateOf(TextFieldValue("")) }
     var jenisKelamin by remember { mutableStateOf("") }
-    val statusPerkawinan by remember { mutableStateOf("") }
+    var statusPerkawinan by remember { mutableStateOf("") }
 
     val paddingSmall = dimensionResource(id = R.dimen.padding_small)
     val paddingMedium = dimensionResource(id = R.dimen.padding_medium)
@@ -113,7 +113,21 @@ fun FormulirPendaftaran(modifier: Modifier){
                         }
                     }
                 }
+                Spacer(modifier = Modifier.height(paddingMedium))
 
+                Text("STATUS PERKAWINAN", fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(paddingSmall))
+                Column(verticalArrangement = Arrangement.spacedBy(paddingSmall)) {
+                    listOf("Janda", "Lajang", "Duda").forEach { opsi ->
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(
+                                selected = statusPerkawinan == opsi,
+                                onClick = { statusPerkawinan = opsi }
+                            )
+                            Text(opsi)
+                        }
+                    }
+                }
             }
         }
     }
