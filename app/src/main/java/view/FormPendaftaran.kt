@@ -1,8 +1,10 @@
 package com.example.tugas4
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,7 +38,7 @@ import androidx.compose.ui.unit.sp
 fun FormulirPendaftaran(modifier: Modifier){
     var nama by remember { mutableStateOf(TextFieldValue("")) }
     val alamat by remember { mutableStateOf(TextFieldValue("")) }
-    val jenisKelamin by remember { mutableStateOf("") }
+    var jenisKelamin by remember { mutableStateOf("") }
     val statusPerkawinan by remember { mutableStateOf("") }
 
     val paddingSmall = dimensionResource(id = R.dimen.padding_small)
@@ -95,6 +98,22 @@ fun FormulirPendaftaran(modifier: Modifier){
                             .padding(vertical = paddingSmall)
                     )
                 }
+                Spacer(modifier = Modifier.height(paddingMedium))
+
+                Text("JENIS KELAMIN", fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(paddingSmall))
+                Column(verticalArrangement = Arrangement.spacedBy(paddingSmall)) {
+                    listOf("Laki-laki", "Perempuan").forEach { opsi ->
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(
+                                selected = jenisKelamin == opsi,
+                                onClick = { jenisKelamin = opsi }
+                            )
+                            Text(opsi)
+                        }
+                    }
+                }
+
             }
         }
     }
