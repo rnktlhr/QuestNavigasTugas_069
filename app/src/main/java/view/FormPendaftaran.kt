@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
@@ -37,7 +39,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun FormulirPendaftaran(modifier: Modifier){
     var nama by remember { mutableStateOf(TextFieldValue("")) }
-    val alamat by remember { mutableStateOf(TextFieldValue("")) }
+    var alamat by remember { mutableStateOf(TextFieldValue("")) }
     var jenisKelamin by remember { mutableStateOf("") }
     var statusPerkawinan by remember { mutableStateOf("") }
 
@@ -127,6 +129,30 @@ fun FormulirPendaftaran(modifier: Modifier){
                             Text(opsi)
                         }
                     }
+                }
+                Spacer(modifier = Modifier.height(paddingMedium))
+
+                Text("ALAMAT", fontWeight = FontWeight.Bold)
+                OutlinedTextField(
+                    value = alamat,
+                    onValueChange = { alamat = it },
+                    placeholder = { Text("Alamat lengkap") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = paddingSmall)
+                )
+
+                Spacer(modifier = Modifier.height(paddingLarge))
+
+                Button(
+                    onClick = { /* aksi submit */ },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2)),
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(buttonHeight)
+                ) {
+                    Text("Submit", color = Color.White, fontWeight = FontWeight.Bold)
                 }
             }
         }
