@@ -45,6 +45,21 @@ fun WelcomeScreen(
                 .size(200.dp)
                 .padding(vertical = 16.dp)
         )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = nama,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.DarkGray
+            )
+            Text(
+                text = nim,
+                fontSize = 16.sp,
+                color = Color.Gray
+            )
+        }
     }
 
 }
