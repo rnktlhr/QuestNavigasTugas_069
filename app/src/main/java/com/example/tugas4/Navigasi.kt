@@ -34,6 +34,16 @@ fun DataApp(
                     }
                 )
             }
+            composable(route = Navigasi.FormPendaftaran.name) {
+                FormPendaftaran(
+                    onSubmitData = {
+                        navController.navigate(Navigasi.Detail.name)
+                    },
+                    onBackClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
         }
     }
 }

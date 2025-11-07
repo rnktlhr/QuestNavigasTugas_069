@@ -37,7 +37,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun FormulirPendaftaran(modifier: Modifier){
+fun FormPendaftaran(
+    onSubmitData: () -> Unit,
+    onBackClick: () -> Unit,
+    modifier: Modifier = Modifier
+){
     var nama by remember { mutableStateOf(TextFieldValue("")) }
     var alamat by remember { mutableStateOf(TextFieldValue("")) }
     var jenisKelamin by remember { mutableStateOf("") }
@@ -145,7 +149,7 @@ fun FormulirPendaftaran(modifier: Modifier){
                 Spacer(modifier = Modifier.height(paddingLarge))
 
                 Button(
-                    onClick = { /* aksi submit */ },
+                    onClick = { onSubmitData() },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8A2BE2)),
                     shape = RoundedCornerShape(50),
                     modifier = Modifier
@@ -153,6 +157,20 @@ fun FormulirPendaftaran(modifier: Modifier){
                         .height(buttonHeight)
                 ) {
                     Text("Submit", color = Color.White, fontWeight = FontWeight.Bold)
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Tombol Kembali
+                Button(
+                    onClick = { onBackClick() },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Gray),
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(buttonHeight)
+                ) {
+                    Text("Kembali", color = Color.White, fontWeight = FontWeight.Bold)
                 }
             }
         }
