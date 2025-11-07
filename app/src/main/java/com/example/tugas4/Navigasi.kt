@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.tugas4.view.HomePage
+import com.example.tugas4.view.TampilData
 
 enum class Navigasi {
     Home,
@@ -40,6 +41,13 @@ fun DataApp(
                         navController.navigate(Navigasi.Detail.name)
                     },
                     onBackClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+            composable(route = Navigasi.Detail.name) {
+                TampilData(
+                    onBackBtnClick = {
                         navController.popBackStack()
                     }
                 )

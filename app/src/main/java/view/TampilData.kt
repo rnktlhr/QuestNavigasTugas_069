@@ -28,7 +28,7 @@ import com.example.tugas4.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
-    onBackBtnClick:()->Unit
+    onBackBtnClick: () -> Unit
 ) {
     val items = listOf(
         Pair(stringResource(id = R.string.nama_lengkap), "Contoh Nama"),
