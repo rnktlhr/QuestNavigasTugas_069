@@ -2,5 +2,20 @@
 <resources>
     <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">39dp</dimen>
+    <dimen name="corner_radius">12dp</dimen>
+    <dimen name="font_title">24sp</dimen>
+    <!-- Margin -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+
+    <!-- Font size -->
+    <dimen name="font_small">14sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_large">20sp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_height">50dp</dimen>
     <dimen name="thickness_divider">1dp</dimen>
 </resources>
